@@ -65,31 +65,34 @@ public class Order {
     }
 
 
-    public void printOrders() {
-        var printOrders = items.stream()
-                .map(Item :: getAmount)
+    public void printOrders(List<Order> orders) {
+        var printOrders = orders.stream()
+                .map(Order :: getItems)
                 .collect(toList());
         printOrders.forEach(System.out::println);
     }
 
     public void getTopNOrders(List<Order> orders) {
-        List<Order> topOrders = orders.stream()
+       var topOrders = orders.stream()
                 .sorted(comparingDouble(Order::getTotal).reversed())
                 .limit(200)
                 .collect(toList());
+        topOrders.forEach(System.out::println);
     }
 
     public void getLowNOrders(List<Order> orders) {
-        List<Order> lowOrders = orders.stream()
+        var lowOrders = orders.stream()
                 .sorted(comparingDouble(Order::getTotal))
                 .limit(10)
                 .collect(toList());
+        lowOrders.forEach(System.out::println);
     }
 
-    public List<Order> getHomeDeliveryOrders(List<Order> orders) {
-        return orders.stream()
+    public void getHomeDeliveryOrders(List<Order> orders) {
+       var homeDelivery = orders.stream()
                 .filter(o -> o.isHomeDelivery())
                 .collect(toList());
+        homeDelivery.forEach(System.out::println);
 
     }
 
@@ -107,16 +110,18 @@ public class Order {
     }
 
 
-    public List<Order> findOrdersByTotalValue(List<Order> orders, double minOrderTotal, double maxOrderTotal) {
-        return orders.stream()
+    public void findOrdersByTotalValue(List<Order> orders, double minOrderTotal, double maxOrderTotal) {
+        var totalValue =  orders.stream()
                 .filter(order -> order.getTotal() >= minOrderTotal && order.getTotal() <= maxOrderTotal)
                 .collect(toList());
+        totalValue.forEach(System.out::println);
     }
 
-    public double totalValueOfAllOrders(List<Order> orders) {
-        return orders.stream()
+    public void totalValueOfAllOrders(List<Order> orders) {
+        var  totalValueOfAllOrders = orders.stream()
                 .mapToDouble(order -> order.getTotal())
                 .reduce(0.0, (a, b) -> a + b);
+        System.out.println(totalValueOfAllOrders);
     }
 
     public List<String> getSortedEmailAddresses(List<Order> orders) {
@@ -128,9 +133,10 @@ public class Order {
         return Arrays.asList(emailAddresses);
     }
 
-    public Map<Customer, List<Order>> getOrdersGroupedByCustomer(List<Order> orders) {
-        return orders.stream()
+    public void getOrdersGroupedByCustomer(List<Order> orders) {
+        var groupedByCustomerorders = orders.stream()
                 .collect(groupingBy(Order::getCustomer));
+        System.out.println(groupedByCustomerorders);
     }
 
     public Map<Customer, Double> getTotalAmountByCustomer(List<Order> orders) {
