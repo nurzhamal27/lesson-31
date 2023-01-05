@@ -3,7 +3,7 @@ package kg.attractor.java.homework.domain;
 import java.util.Objects;
 
 public class Item {
-    // Этот блок кода менять нельзя! НАЧАЛО!
+
     private final String name;
     private final double price;
     private final String type;
@@ -52,11 +52,7 @@ public class Item {
     public String getType() {
         return type;
     }
-    // Этот блок кода менять нельзя! КОНЕЦ!
 
-    //----------------------------------------------------------------------
-    //------   Реализация ваших методов должна быть ниже этой линии   ------
-    //----------------------------------------------------------------------
 
 
 }

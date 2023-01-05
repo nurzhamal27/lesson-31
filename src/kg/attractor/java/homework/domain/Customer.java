@@ -3,7 +3,6 @@ package kg.attractor.java.homework.domain;
 import java.util.Objects;
 
 public class Customer {
-    // Этот блок кода менять нельзя! НАЧАЛО!
     private final String fullName;
     private final String email;
 
@@ -33,11 +32,5 @@ public class Customer {
     public String getEmail() {
         return email;
     }
-    // Этот блок кода менять нельзя! КОНЕЦ!
-
-    //----------------------------------------------------------------------
-    //------   Реализация ваших методов должна быть ниже этой линии   ------
-    //----------------------------------------------------------------------
-
 
 }
